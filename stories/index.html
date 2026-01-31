@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories | Luan's Arcane Archives</title>
+    <meta name="description" content="るあんの作品一覧。シリーズ作品から単発・短編まで、すべての物語をここで。">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Luan's Arcane Archives - Stories">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'], serif: ['"Noto Serif JP"', 'serif'] },
+                    colors: { gold: 'rgba(210,178,106, 1)', wine: '#580c1a' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body{ background: #07060a; color: #e2e8f0; }
+        .bg-layer{ position: fixed; inset: 0; z-index: -2; background: #0f172a; }
+        .lib-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; }
+        .lib-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); border-color: rgba(210,178,106,0.5); }
+        .chip-on { background: rgba(210,178,106,0.9) !important; color: #000 !important; font-weight: bold; }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="bg-layer"></div>
+
+    <header class="sticky top-0 z-50 px-4 py-4">
+        <nav class="max-w-6xl mx-auto bg-black/80 backdrop-blur border border-white/10 rounded-full px-5 py-3 flex items-center justify-between">
+            <a href="../index.html" class="font-serif font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-slate-200">Luan's Archives</a>
+            <div class="flex gap-3 text-sm">
+                <a href="../index.html" class="hover:text-white transition">Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-20 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+            <div>
+                <h1 class="font-serif text-3xl md:text-4xl font-black text-white">Archives</h1>
+                <p class="text-slate-400 mt-2">全作品データベース</p>
+            </div>
+            <div class="flex gap-2 bg-white/5 p-1 rounded-xl">
+                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5" data-status="">All</button>
+                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5" data-status="ongoing">Ongoing</button>
+                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5" data-status="completed">Completed</button>
+                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5" data-status="oneshot">Shorts</button>
+            </div>
+        </div>
+
+        <input id="q" type="text" placeholder="キーワード検索..." class="w-full md:w-1/2 mb-8 px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-orange-300 transition">
+
+        <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+    </main>
+
+    <script>
+        // Minimal logic for maximized speed
+        let ALL = [];
+        const grid = document.getElementById('grid');
+        const qInput = document.getElementById('q');
+        const tabs = document.querySelectorAll('.tab');
+
+        async function load() {
+            try {
+                const d = await (await fetch('./data.json')).json();
+                const s = (d.series || []).map(x => ({...x, type: 'series'}));
+                const o = (d.oneshots || []).map(x => ({...x, type: 'oneshot', status:'oneshot'}));
+                ALL = [...s, ...o];
+                render();
+            } catch(e){ grid.innerHTML = '<div class="col-span-3 text-center">Loading Failed.</div>'; }
+        }
+
+        function render(filterStatus = '') {
+            const term = qInput.value.toLowerCase();
+            const filtered = ALL.filter(item => {
+                const matchText = (item.title + item.summary + (item.tags||[])).toLowerCase().includes(term);
+                const matchStatus = filterStatus ? item.status === filterStatus : true;
+                return matchText && matchStatus;
+            });
+
+            grid.innerHTML = filtered.map(item => `
+                <a href="${item.type === 'oneshot' ? 'oneshot.html' : 'series.html'}?slug=${item.slug}" class="lib-card rounded-2xl overflow-hidden block group h-full flex flex-col">
+                    <div class="h-48 bg-cover bg-center" style="background-image:url('${item.thumb || "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600"}')"></div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="text-xs font-bold text-orange-300 mb-1 uppercase">${item.status}</div>
+                        <h3 class="font-serif text-lg font-bold text-white mb-2 leading-snug">${item.title}</h3>
+                        <p class="text-xs text-slate-400 line-clamp-2 mb-4 flex-1">${item.summary || ''}</p>
+                        <div class="flex flex-wrap gap-1 mt-auto">
+                            ${(item.tags||[]).slice(0,3).map(t=>`<span class="px-2 py-1 bg-white/5 rounded text-[10px]">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        tabs.forEach(t => t.addEventListener('click', e => {
+            tabs.forEach(x => x.classList.remove('chip-on'));
+            e.target.classList.add('chip-on');
+            render(e.target.dataset.status);
+        }));
+
+        qInput.addEventListener('input', () => render(document.querySelector('.chip-on')?.dataset.status || ''));
+        
+        // Initial State
+        tabs[0].classList.add('chip-on');
+        load();
+    </script>
+</body>
+</html>

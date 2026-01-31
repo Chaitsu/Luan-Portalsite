@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luan's Arcane Archives | 物語を、遊ぼう。</title>
+    <meta name="description" content="ゆっくり茶番劇者・るあんの公式ポータルサイト。東方Projectのキャラクターたちが織りなす、秘密の書庫へようこそ。">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://luan-archive.com/">
+    <meta property="og:title" content="Luan's Arcane Archives">
+    <meta property="og:description" content="物語を、遊ぼう。るあんの脚本と演出が織りなす茶番劇の世界。">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@LuanRuan5831">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'], serif: ['"Noto Serif JP"', 'serif'] },
+                    colors: { glass: 'rgba(255, 255, 255, 0.05)', glassHover: 'rgba(255, 255, 255, 0.1)', borderGlass: 'rgba(255, 255, 255, 0.1)' },
+                    animation: { 'float': 'float 6s ease-in-out infinite' },
+                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } } }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .bg-fixed-layer { position: fixed; inset: 0; z-index: -2; background-image: url('https://images.unsplash.com/photo-1535905557558-afc4877a26fc?q=80&w=2574&auto=format&fit=crop'); background-size: cover; background-position: center; }
+        .bg-overlay { position: fixed; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.95)); backdrop-filter: blur(4px); }
+    </style>
+</head>
+
+<body id="top" class="text-slate-200 antialiased selection:bg-indigo-500 selection:text-white">
+    <div class="bg-fixed-layer"></div>
+    <div class="bg-overlay"></div>
+
+    <header class="fixed top-0 w-full z-50 px-4 py-4">
+        <nav class="max-w-7xl mx-auto bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-full px-6 py-3 flex justify-between items-center shadow-lg reveal active">
+            <a href="#top" class="font-serif font-bold text-lg md:text-xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-purple-200 hover:opacity-80 transition">
+                Luan's Arcane Archives
+            </a>
+
+            <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+                <li><a href="stories/index.html" class="hover:text-white transition">Stories</a></li>
+                <li><a href="#about" class="hover:text-white transition">About</a></li>
+                <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                <li>
+                    <a href="https://www.youtube.com/@luanruan_yukkuri" target="_blank" class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition">YouTube</a>
+                </li>
+            </ul>
+
+            <button id="menuBtn" class="md:hidden p-2 text-slate-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+
+        <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-950/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-8 text-xl font-serif">
+            <button id="closeMenuBtn" class="absolute top-6 right-6 p-2 text-slate-400 hover:text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <a href="stories/index.html" class="mobile-link hover:text-indigo-300 transition">Stories</a>
+            <a href="#about" class="mobile-link hover:text-indigo-300 transition">About</a>
+            <a href="#contact" class="mobile-link hover:text-indigo-300 transition">Contact</a>
+            <a href="https://www.youtube.com/@luanruan_yukkuri" target="_blank" class="mobile-link text-red-400 hover:text-red-300 transition">YouTube Channel</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 pt-32 pb-20">
+        <div id="works" class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-4 gap-6 h-auto">
+            <div class="reveal md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-3xl border border-borderGlass bg-glass hover:bg-glassHover shadow-2xl transition-all duration-500">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-40" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2670&auto=format&fit=crop');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+                <div class="relative h-full p-8 flex flex-col justify-end items-start z-10">
+                    <span class="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-indigo-300 uppercase border border-indigo-500/30 rounded-full bg-indigo-950/50 backdrop-blur-sm">Official Portal</span>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-black mb-2 leading-tight">物語を、<br>遊ぼう。</h1>
+                    <p class="text-slate-400 font-sans mt-2 max-w-md">ゆっくり茶番劇者・るあん公式ポータル。<br>脚本と演出が織りなす、秘密の書庫へようこそ。</p>
+                </div>
+            </div>
+
+            <a id="latestCard" href="https://www.youtube.com/@luanruan_yukkuri" target="_blank" rel="noopener" class="reveal md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-3xl border border-borderGlass bg-glass hover:bg-glassHover shadow-xl transition-all duration-500 block">
+                <div id="latestBg" class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950/90"></div>
+                <div class="relative h-full p-6 flex flex-col justify-between z-10">
+                    <div class="flex justify-between items-start">
+                        <span id="latestMeta" class="text-xs font-bold text-white/80">LATEST</span>
+                        <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                    </div>
+                    <div>
+                        <h2 id="latestTitle" class="font-serif text-xl font-bold mb-1">Loading...</h2>
+                        <p id="latestDesc" class="text-xs text-slate-300 line-clamp-2">最新情報を取得中...</p>
+                        <div class="mt-4 inline-flex items-center text-sm font-bold text-indigo-400 group-hover:translate-x-1 transition-transform">Watch <span class="ml-1">&rarr;</span></div>
+                    </div>
+                </div>
+            </a>
+
+            <div id="about" class="reveal md:col-span-1 md:row-span-1 relative overflow-hidden rounded-3xl border border-borderGlass bg-slate-800/40 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center shadow-xl">
+                <div class="w-20 h-20 rounded-full mb-4 border-2 border-indigo-400/50 p-1">
+                    <img src="icon.jpg" alt="Luan" class="w-full h-full rounded-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Luan&background=random'">
+                </div>
+                <h3 class="font-serif text-xl font-bold">るあん</h3>
+                <p class="text-xs text-slate-400 mt-1">Scriptwriter / Creator</p>
+            </div>
+
+            <a href="stories/index.html?status=ongoing" class="reveal md:col-span-2 md:row-span-1 relative group overflow-hidden rounded-3xl border border-borderGlass bg-glass hover:bg-glassHover shadow-xl">
+                <div id="ongoingBg" class="absolute inset-0 bg-cover bg-center opacity-50 transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80');"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-orange-900/80 to-transparent mix-blend-multiply"></div>
+                <div class="relative h-full p-6 flex items-center z-10">
+                    <div>
+                        <span class="text-xs font-bold text-orange-300 tracking-wider">ONGOING <span id="ongoingCount"></span></span>
+                        <h3 class="font-serif text-2xl font-bold text-white mt-1">進行中作品</h3>
+                    </div>
+                </div>
+            </a>
+
+            <a href="stories/index.html?status=completed" class="reveal md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl border border-borderGlass bg-glass hover:bg-glassHover shadow-xl">
+                <div id="completedBg" class="absolute inset-0 bg-cover bg-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700" style="background-image: url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?q=80');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-red-950/90 to-transparent"></div>
+                <div class="relative h-full p-6 flex flex-col justify-end z-10">
+                    <span id="completedCount" class="text-xs text-red-200/70 font-semibold"></span>
+                    <h3 class="font-serif text-xl font-bold text-red-100">完結作品</h3>
+                </div>
+            </a>
+
+            <a href="stories/index.html?status=oneshot" class="reveal md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl border border-borderGlass bg-glass hover:bg-glassHover shadow-xl">
+                <div id="oneshotBg" class="absolute inset-0 bg-cover bg-center opacity-50 transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1528360983277-13d9b152c56e?q=80');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-purple-950/90 to-transparent"></div>
+                <div class="relative h-full p-6 flex flex-col justify-end z-10">
+                    <span id="oneshotCount" class="text-xs text-purple-200/70 font-semibold"></span>
+                    <h3 class="font-serif text-xl font-bold text-purple-100">単発・短編</h3>
+                </div>
+            </a>
+
+            <div id="contact" class="reveal md:col-span-4 md:row-span-1 bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="font-serif text-lg tracking-wide">Follow Me</span>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://www.youtube.com/@luanruan_yukkuri" target="_blank" class="px-6 py-3 rounded-full bg-red-600/10 hover:bg-red-600/20 text-red-400 border border-red-500/30 transition">YouTube</a>
+                    <a href="https://x.com/LuanRuan5831" target="_blank" class="px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/10 transition">X (Twitter)</a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-20 text-center border-t border-white/5 pt-10">
+            <p class="font-serif text-slate-500 text-sm">&copy; 2026 Luan Yukkuri Chabangeki.</p>
+        </footer>
+    </main>
+
+    <script>
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', toggleMenu));
+
+        // Scroll Reveal
+        window.addEventListener('scroll', () => {
+            const h = window.innerHeight;
+            document.querySelectorAll('.reveal').forEach(r => {
+                if(r.getBoundingClientRect().top < h - 100) r.classList.add('active');
+            });
+        });
+
+        // Data Loader
+        async function init() {
+            try {
+                const res = await fetch("./stories/data.json"); // path adjusted
+                const data = await res.json();
+
+                // Update Latest
+                const lat = data.channel?.latest;
+                if(lat && lat.title) {
+                    document.getElementById('latestTitle').textContent = lat.title;
+                    document.getElementById('latestDesc').textContent = lat.summary || "";
+                    document.getElementById('latestCard').href = lat.url;
+                    if(lat.thumb) document.getElementById('latestBg').style.backgroundImage = `url('${lat.thumb}')`;
+                    if(lat.publishedAt) document.getElementById('latestMeta').textContent = `LATEST • ${lat.publishedAt}`;
+                }
+
+                // Update Counts & Bgs
+                const s = data.series || [], o = data.oneshots || [];
+                const ongoing = s.filter(x => x.status === 'ongoing');
+                const completed = s.filter(x => x.status === 'completed');
+                
+                document.getElementById('ongoingCount').textContent = ongoing.length;
+                document.getElementById('completedCount').textContent = completed.length;
+                document.getElementById('oneshotCount').textContent = o.length;
+
+                // Simple BG update logic (taking first item's thumb if available)
+                if(ongoing[0]?.thumb) document.getElementById('ongoingBg').style.backgroundImage = `url('${ongoing[0].thumb}')`;
+                if(completed[0]?.thumb) document.getElementById('completedBg').style.backgroundImage = `url('${completed[0].thumb}')`;
+                if(o[0]?.thumb) document.getElementById('oneshotBg').style.backgroundImage = `url('${o[0].thumb}')`;
+
+            } catch(e) { console.error("Data load failed", e); }
+        }
+        init();
+    </script>
+</body>
+</html>

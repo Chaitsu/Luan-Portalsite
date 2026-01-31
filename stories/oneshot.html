@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One-shot | Luan's Arcane Archives</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            serif: ['"Noto Serif JP"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root{
+      --ink: 226 232 240;
+      --muted: 148 163 184;
+      --bg0: 7 6 10;
+      --wine: 88 12 26;
+      --scarlet: 160 20 50;
+      --gold: 210 178 106;
+    }
+    body{ color: rgb(var(--ink)); background: rgb(var(--bg0)); }
+    .bg-fixed-layer{
+      position: fixed; inset: 0; z-index:-2;
+      background-image:
+        radial-gradient(900px 520px at 18% 35%, rgba(var(--scarlet), .20), transparent 60%),
+        radial-gradient(750px 450px at 72% 25%, rgba(var(--gold), .12), transparent 55%),
+        url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2400&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .bg-overlay{
+      position: fixed; inset:0; z-index:-1;
+      background:
+        linear-gradient(to bottom, rgba(10, 6, 10, .55), rgba(7, 6, 10, .92)),
+        radial-gradient(1200px 720px at 50% 80%, rgba(var(--wine), .28), transparent 60%);
+      backdrop-filter: blur(5px);
+    }
+    .lib-card{
+      border: 1px solid rgba(var(--gold), .16);
+      background: rgba(255,255,255,.045);
+      box-shadow: 0 22px 60px rgba(0,0,0,.50);
+    }
+    .lib-card:hover{
+      border-color: rgba(var(--gold), .28);
+      background: rgba(255,255,255,.06);
+    }
+    a:focus-visible, button:focus-visible{
+      outline: 2px solid rgba(var(--gold), .55);
+      outline-offset: 3px;
+      border-radius: 14px;
+    }
+  </style>
+<link rel="stylesheet" href="../assets/theme.css">
+
+</head>
+
+<body class="antialiased">
+  <div class="bg-fixed-layer"></div>
+  <div class="bg-overlay"></div>
+
+  <header class="sticky top-0 z-50 px-4 py-4">
+    <nav class="max-w-6xl mx-auto bg-black/45 backdrop-blur-md border border-white/10 rounded-3xl px-5 py-4 flex items-center justify-between">
+      <a href="../index.html" class="font-serif font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--gold))] to-slate-200">
+        Luan's Arcane Archives
+      </a>
+      <div class="flex gap-2">
+        <a href="index.html?status=oneshot" class="px-4 py-2 rounded-2xl bg-white/5 hover:bg-white/10 transition text-sm">← 単発・短編作品一覧へ</a>
+        <a href="../index.html" class="px-4 py-2 rounded-2xl bg-white/5 hover:bg-white/10 transition text-sm">Home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 pb-20">
+    <section class="mt-6 lib-card rounded-3xl overflow-hidden">
+      <div id="heroImg" class="h-56 md:h-72 bg-cover bg-center opacity-90"></div>
+      <div class="p-6 md:p-8">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div id="meta" class="text-sm text-slate-300"></div>
+            <h1 id="title" class="mt-1 font-serif text-3xl md:text-4xl font-black text-white">Loading...</h1>
+          </div>
+          <a id="watch" href="#" target="_blank" rel="noopener"
+             class="px-5 py-3 rounded-2xl font-bold text-black bg-[rgba(210,178,106,.95)] hover:opacity-90 transition">
+            視聴する →
+          </a>
+        </div>
+
+        <p id="summary" class="mt-4 text-slate-200/90 leading-relaxed"></p>
+        <div id="tags" class="mt-4 flex flex-wrap gap-2"></div>
+      </div>
+    </section>
+
+    <section class="mt-6 lib-card rounded-3xl p-6 md:p-8">
+      <h2 class="font-serif text-2xl font-black text-white">Related</h2>
+      <p class="text-slate-300 text-sm mt-1">タグが近い作品（最大6件）</p>
+      <div id="related" class="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    </section>
+  </main>
+
+  <script>
+    const $ = (s) => document.querySelector(s);
+
+    function getSlug(){
+      return new URLSearchParams(location.search).get("slug") || "";
+    }
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, s => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[s]));
+    }
+    function ytThumb(videoId){
+      return [
+        `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+        `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+      ];
+    }
+    function resolveThumb(item){
+      if(item.thumb) return item.thumb;
+      if(item.videoId) return ytThumb(item.videoId)[0];
+      return "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1800&auto=format&fit=crop";
+    }
+    function parseDateSafe(v){
+      const d = v ? new Date(v) : null;
+      return (d && !isNaN(d.getTime())) ? d : null;
+    }
+
+    async function loadData(){
+      const res = await fetch("./data.json", { cache:"no-store" });
+      if(!res.ok) throw new Error("failed to load data.json");
+      return res.json();
+    }
+
+    function scoreByTags(baseTags, candidateTags){
+      const a = new Set((baseTags || []).filter(t => t !== "単発"));
+      const b = new Set((candidateTags || []).filter(t => t !== "単発"));
+      let score = 0;
+      for(const t of a) if(b.has(t)) score++;
+      return score;
+    }
+
+    function card(item){
+      const href = item.type === "oneshot"
+        ? `oneshot.html?slug=${encodeURIComponent(item.slug)}`
+        : `series.html?slug=${encodeURIComponent(item.slug)}`;
+
+      const badge = item.type === "oneshot" ? "単発" : (item.status === "completed" ? "完結" : "進行中");
+
+      return `
+        <a href="${href}" class="group lib-card rounded-3xl overflow-hidden transition block">
+          <div class="h-40 bg-cover bg-center opacity-85 group-hover:opacity-100 transition"
+               style="background-image:url('${resolveThumb(item)}')"></div>
+          <div class="p-5">
+            <div class="text-xs font-bold text-[rgb(210,178,106)]">${badge}</div>
+            <div class="mt-2 font-serif text-lg font-black text-white">${escapeHtml(item.title)}</div>
+            <div class="mt-2 text-sm text-slate-300 line-clamp-2">${escapeHtml(item.summary || "")}</div>
+            <div class="mt-4 inline-flex items-center text-sm font-bold text-[rgb(210,178,106)] group-hover:translate-x-1 transition-transform">
+              開く →
+            </div>
+          </div>
+        </a>
+      `;
+    }
+
+    (async function init(){
+      const slug = getSlug();
+      const data = await loadData();
+
+      const oneshots = (data.oneshots || []).map(o => ({...o, type:"oneshot", status:"oneshot"}));
+      const series = (data.series || []).map(s => ({...s, type:"series"}));
+
+      const item = oneshots.find(o => o.slug === slug);
+
+      if(!item){
+        $("#title").textContent = "単発作品が見つかりません";
+        $("#summary").textContent = "URLの slug が正しいか、data.json に登録されているか確認してください。";
+        $("#watch").classList.add("hidden");
+        $("#related").innerHTML = `<a href="index.html?status=oneshot" class="px-5 py-3 rounded-2xl font-bold text-black bg-[rgba(210,178,106,.95)] inline-flex hover:opacity-90 transition">単発一覧へ戻る →</a>`;
+        return;
+      }
+
+      document.title = `${item.title} | Luan's Arcane Archives`;
+
+      $("#heroImg").style.backgroundImage = `url('${resolveThumb(item)}')`;
+
+      const pub = parseDateSafe(item.publishedAt);
+      $("#meta").textContent = pub ? `単発 / 公開：${pub.toLocaleDateString("ja-JP")}` : "単発";
+      $("#title").textContent = item.title || "";
+      $("#summary").textContent = item.summary || "";
+
+      const tags = (item.tags || []).map(t =>
+        `<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs">${escapeHtml(t)}</span>`
+      ).join("");
+      $("#tags").innerHTML = tags;
+
+      const watch = $("#watch");
+      watch.href = item.url || "https://www.youtube.com/";
+      if(!item.url) watch.classList.add("hidden");
+
+      // related: タグ共通でスコア
+      const candidates = [...series, ...oneshots].filter(x => x.slug !== item.slug);
+      const scored = candidates
+        .map(x => ({ x, s: scoreByTags(item.tags, x.tags) }))
+        .filter(o => o.s > 0)
+        .sort((a,b) => b.s - a.s)
+        .slice(0, 6)
+        .map(o => o.x);
+
+      $("#related").innerHTML = scored.length
+        ? scored.map(card).join("")
+        : `<div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-slate-200">関連作品がまだありません。</div>`;
+
+    })().catch(err => {
+      console.error(err);
+      $("#title").textContent = "読み込みに失敗しました";
+      $("#summary").textContent = "./data.json が見つからないか、HTTP配信されていない可能性があります。";
+      $("#watch").classList.add("hidden");
+    });
+  </script>
+</body>
+</html>

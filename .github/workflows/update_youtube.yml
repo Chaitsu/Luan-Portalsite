@@ -1,0 +1,29 @@
+name: Update Latest Video (RSS)
+on:
+  schedule:
+    - cron: '0 0 * * *' # 毎日 UTC 0:00 (JST 9:00)
+  workflow_dispatch: # 手動実行用
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Update Script
+        run: |
+          node scripts/update_video.js
+
+      - name: Commit and Push if changed
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add stories/data.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update latest video via RSS" && git push)

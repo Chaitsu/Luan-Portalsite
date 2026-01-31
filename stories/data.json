@@ -1,0 +1,490 @@
+{
+  "version": 2,
+  "channel": {
+    "youtubeHandle": "@luanruan_yukkuri",
+    "youtubeChannelId": "",
+    "latest": {
+      "title": "【ゆっくり茶番劇】人喰イノ器《東方地電郷 -能力者達ノ生存戦争-：Eps.18》",
+      "summary": "シリーズの第18話です。\n前回→https://youtu.be/tZ3vJA4zkbw\nシリーズの再生リスト→https://www.youtube.com/...",
+      "url": "https://www.youtube.com/watch?v=xO2wZGOavEs",
+      "videoId": "xO2wZGOavEs",
+      "thumb": "https://i.ytimg.com/vi/xO2wZGOavEs/maxresdefault.jpg",
+      "publishedAt": "2026-01-28"
+    }
+  },
+  "series": [
+    {
+      "id": "souei",
+      "slug": "souei",
+      "title": "双影、続く時の中で",
+      "status": "completed",
+      "order": 10,
+      "createdAt": "2025-09-18",
+      "updatedAt": "2025-10-24",
+      "summary": "2人の「影」を中心に、それぞれが一生懸命に生きようとする物語。",
+      "tags": [
+        "ヒューマンドラマ",
+        "恋愛",
+        "ミステリー"
+      ],
+      "thumb": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1800&auto=format&fit=crop",
+      "links": {
+        "youtubePlaylist": "https://youtu.be/bgt4UIgJa1o"
+      },
+      "episodes": [
+        {
+          "id": "souei-ep-001",
+          "no": 1,
+          "title": "1話：殺人、暗闇の中で",
+          "publishedAt": "2025-09-18",
+          "url": "https://youtu.be/_cZGlVRjlWI",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "souei-ep-002",
+          "no": 2,
+          "title": "2話：邂逅、知られざる傷跡",
+          "publishedAt": "2025-09-24",
+          "url": "https://youtu.be/zm9uEv6PGN8",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "souei-ep-003",
+          "no": 3,
+          "title": "3話：宿命、愛の絆の裏に",
+          "publishedAt": "2025-10-04",
+          "url": "https://youtu.be/OW6jIFrhKSA",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "souei-ep-004",
+          "no": 4,
+          "title": "4話：花屋、それは双影の光で",
+          "publishedAt": "2025-10-06",
+          "url": "https://youtu.be/UteO5wScdMA",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "souei-ep-005",
+          "no": 5,
+          "title": "5話：交錯、静かに灯る想い",
+          "publishedAt": "2025-10-10",
+          "url": "https://youtu.be/TjR4lQOQTeA",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "souei-ep-006",
+          "no": 6,
+          "title": "6話：紅月、決戦前夜に",
+          "publishedAt": "2025-10-14",
+          "url": "https://youtu.be/70XWgxAeYBA",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "souei-ep-007",
+          "no": 7,
+          "title": "7話：決戦、戦いの果ては",
+          "publishedAt": "2025-10-17",
+          "url": "https://youtu.be/RJacEwpmLzY",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "souei-ep-008",
+          "no": 8,
+          "title": "8話：終幕、燃ゆる感情の果てに",
+          "publishedAt": "2025-10-21",
+          "url": "https://youtu.be/UBg2_RMco7I",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "souei-ep-009",
+          "no": 9,
+          "title": "9話：再生、影は光の先へ",
+          "publishedAt": "2025-10-22",
+          "url": "https://youtu.be/JHymlsa1LWA",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "souei-ep-010",
+          "no": 10,
+          "title": "最終話：継影、見続けるべき明日へ",
+          "publishedAt": "2025-10-24",
+          "url": "https://youtu.be/KGcMJzOJ6S0",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        }
+      ]
+    },
+    {
+      "id": "kaijisyou",
+      "slug": "kajisyou",
+      "title": "東方廻時璋",
+      "status": "ongoing",
+      "order": 30,
+      "createdAt": "2025-11-03",
+      "updatedAt": "2026-01-24",
+      "summary": "ある日突然、スキマに落ち幻想入り。持っていた能力は、死に戻りするというものだった。",
+      "tags": [
+        "幻想入り",
+        "ファンタジー",
+        "戦闘"
+      ],
+      "thumb": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1800&auto=format&fit=crop",
+      "links": {
+        "youtubePlaylist": "https://www.youtube.com/playlist?list=PLZFbCJaD70msvMKl59BHfpxKJQlNBgxp1"
+      },
+      "episodes": [
+        {
+          "id": "kaiji-ep-001",
+          "no": 1,
+          "title": "Eps.1：幻想入りした俺の能力は、死に戻りでした！？",
+          "publishedAt": "2025-11-03",
+          "url": "https://youtu.be/7GbDYALepqA",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "kaiji-ep-002",
+          "no": 2,
+          "title": "Eps.2：人里での出会い",
+          "publishedAt": "2025-11-14",
+          "url": "https://youtu.be/l8yMYojwFac",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "kaiji-ep-003",
+          "no": 3,
+          "title": "Eps.3：弾幕ごっこと魔法の森",
+          "publishedAt": "2025-12-03",
+          "url": "https://youtu.be/WxdFsZo7FK4",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "kaiji-ep-004",
+          "no": 4,
+          "title": "Eps.4：死の予感と人形遣い",
+          "publishedAt": "2026-01-07",
+          "url": "https://youtu.be/wPaA_yvTtx4",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "kaiji-ep-005",
+          "no": 5,
+          "title": "Eps.5：いざ、使用人試験！",
+          "publishedAt": "2026-01-24",
+          "url": "https://youtu.be/WPIkjatTt2A",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        }
+      ]
+    },
+    {
+      "id": "hoshikaze",
+      "slug": "hoshikaze",
+      "title": "星風市復興大作戦！",
+      "status": "ongoing",
+      "order": 30,
+      "createdAt": "2025-11-04",
+      "updatedAt": "2026-01-17",
+      "summary": "田舎の中学・その写真部員たちが織り成す、優しくも苦しい青春ドラマ。",
+      "tags": [
+        "ヒューマンドラマ",
+        "中学"
+      ],
+      "thumb": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1800&auto=format&fit=crop",
+      "links": {
+        "youtubePlaylist": "https://www.youtube.com/playlist?list=PLZFbCJaD70mtLQ0rSBzL3cArUCokAK4Dr"
+      },
+      "episodes": [
+        {
+          "id": "hoshikaze-ep-001",
+          "no": 1,
+          "title": "1話：星風中学校写真部",
+          "publishedAt": "2025-11-04",
+          "url": "https://youtu.be/nazJJ8-3rMU",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "hoshikaze-ep-002",
+          "no": 2,
+          "title": "2話：第一回、作戦会議！",
+          "publishedAt": "2025-11-21",
+          "url": "https://youtu.be/vzgRTWx5III",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "hoshikaze-ep-003",
+          "no": 3,
+          "title": "3話：レンズ越しの世界",
+          "publishedAt": "2026-01-17",
+          "url": "https://youtu.be/9zKD8llG4H4",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        }
+      ]
+    },
+    {
+      "id": "agenda",
+      "slug": "agenda",
+      "title": "俺たちの青春議事録",
+      "status": "ongoing",
+      "order": 30,
+      "createdAt": "2025-11-02",
+      "updatedAt": "2025-12-13",
+      "summary": "「議事録、4月某日」。生徒会室で繰り広げられる、青春ラブコメディ。",
+      "tags": [
+        "恋愛",
+        "高校"
+      ],
+      "thumb": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1800&auto=format&fit=crop",
+      "links": {
+        "youtubePlaylist": "https://www.youtube.com/playlist?list=PLZFbCJaD70mvxGgFYIRdojp-5o0st37wq"
+      },
+      "episodes": [
+        {
+          "id": "agenda-ep-001",
+          "no": 1,
+          "title": "1話：強制加入されられた生徒会のメンバーは、会長一人だけでした",
+          "publishedAt": "2025-11-02",
+          "url": "https://youtu.be/crzajOJH1zQ",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "agenda-ep-002",
+          "no": 2,
+          "title": "2話：投げられたのは、策士か、道化か、あるいは劇薬か。",
+          "publishedAt": "2025-12-13",
+          "url": "https://youtu.be/pzDfWDuB5aII",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "agenda-ep-003",
+          "no": 3,
+          "title": "3話：収録中、道化たちは共鳴する。",
+          "publishedAt": "2026-02-01",
+          "url": "https://youtu.be/F17OUTFAWXw",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        }
+      ]
+    },
+    {
+      "id": "chiden",
+      "slug": "chiden",
+      "title": "東方地電郷 -能力者達ノ生存戦争-",
+      "status": "ongoing",
+      "order": 30,
+      "createdAt": "2025-11-05",
+      "updatedAt": "2025-01-28",
+      "summary": "「議事録、4月某日」。生徒会室で繰り広げられる、青春ラブコメディ。",
+      "tags": [
+        "SF",
+        "戦闘",
+        "ミステリー",
+        "ディストピア"
+      ],
+      "thumb": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1800&auto=format&fit=crop",
+      "links": {
+        "youtubePlaylist": "https://www.youtube.com/playlist?list=PLZFbCJaD70msH5TtD87vI76egTVNX2yC3"
+      },
+      "episodes": [
+        {
+          "id": "chiden-ep-001",
+          "no": 1,
+          "title": "Eps.1：生存戦争ノ始マリ",
+          "publishedAt": "2025-11-05",
+          "url": "https://youtu.be/uClC634d6PI",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-002",
+          "no": 2,
+          "title": "Eps.2：最初ノ亀裂",
+          "publishedAt": "2025-11-10",
+          "url": "https://youtu.be/5BdjP7WQXEc",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-003",
+          "no": 3,
+          "title": "Eps.3：霊夢ノ能力ト跳躍",
+          "publishedAt": "2025-11-12",
+          "url": "https://youtu.be/H920Lo18cKc",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-004",
+          "no": 4,
+          "title": "Eps.4：錆ビツイタ剣",
+          "publishedAt": "2025-11-16",
+          "url": "https://youtu.be/o3tQczTyLDk",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-005",
+          "no": 5,
+          "title": "Eps.5：断絶ノサイレン",
+          "publishedAt": "2025-11-19",
+          "url": "https://youtu.be/cQ3FyPwvUMo",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-006",
+          "no": 6,
+          "title": "Eps.6：閉ジタ瞳ノログ",
+          "publishedAt": "2025-11-27",
+          "url": "https://youtu.be/XukJNGnXHQg",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-007",
+          "no": 7,
+          "title": "Eps.7：パスワード：愛言葉",
+          "publishedAt": "2025-12-01",
+          "url": "https://youtu.be/qOjAs_c2xG4",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-008",
+          "no": 8,
+          "title": "Eps.8：教室ノ空気",
+          "publishedAt": "2025-12-06",
+          "url": "https://youtu.be/OaaXMQeEVyA",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-009",
+          "no": 9,
+          "title": "Eps.9：流サレタ言葉",
+          "publishedAt": "2025-12-10",
+          "url": "https://youtu.be/PAn74YkfEEM",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-010",
+          "no": 10,
+          "title": "Eps.10：五ツノ傷跡",
+          "publishedAt": "2025-12-18",
+          "url": "https://youtu.be/C_7p8Jw9Wj0",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-011",
+          "no": 11,
+          "title": "Eps.11：光ノ粒子",
+          "publishedAt": "2025-12-29",
+          "url": "https://youtu.be/pM261zcZmHE",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-012",
+          "no": 12,
+          "title": "Eps.12：刻マレタ数字",
+          "publishedAt": "2026-01-04",
+          "url": "https://youtu.be/wNo6er2Aj40",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-013",
+          "no": 13,
+          "title": "Eps.13：偽リノ預言者",
+          "publishedAt": "2026-01-08",
+          "url": "https://youtu.be/yiK7izFWuiE",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-014",
+          "no": 14,
+          "title": "Eps.14：鋼鉄ノ涙雨",
+          "publishedAt": "2026-01-10",
+          "url": "https://youtu.be/xANEy39gbek",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-015",
+          "no": 15,
+          "title": "Eps.15：疑心",
+          "publishedAt": "2026-01-21",
+          "url": "https://youtu.be/D10UgOEubnE",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-016",
+          "no": 16,
+          "title": "Eps.16：原罪ノユリカゴ",
+          "publishedAt": "2026-01-22",
+          "url": "https://youtu.be/MR7oHkbEZVw",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-017",
+          "no": 17,
+          "title": "Eps.17：権限ナキ侵入",
+          "publishedAt": "2026-01-26",
+          "url": "https://youtu.be/tZ3vJA4zkbw",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "chiden-ep-018",
+          "no": 18,
+          "title": "Eps.18：人喰イノ器",
+          "publishedAt": "2026-01-28",
+          "url": "https://youtu.be/xO2wZGOavEs",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        }
+      ]
+    }
+  ],
+  "oneshots": [
+    {
+      "id": "oneshot-closed-room",
+      "slug": "oneshot-closed-room",
+      "title": "僕とアリスのささいな日常",
+      "publishedAt": "2025-09-15",
+      "updatedAt": "2025-09-15",
+      "order": 50,
+      "summary": "初投稿作品。ゆるふわ日常恋愛。",
+      "tags": [
+        "単発",
+        "恋愛"
+      ],
+      "url": "https://youtu.be/SoH-vYJRPfo",
+      "videoId": "VIDEO_ID_2",
+      "thumb": ""
+    }
+  ]
+}
