@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stories | Luan's Arcane Archives</title>
     <meta name="description" content="るあんの作品一覧。シリーズ作品から単発・短編まで、すべての物語をここで。">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Luan's Arcane Archives - Stories">
+    <link rel="icon" href="../images/icon.jpg">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'], serif: ['"Noto Serif JP"', 'serif'] },
-                    colors: { gold: 'rgba(210,178,106, 1)', wine: '#580c1a' }
+                    colors: { gold: 'rgba(210,178,106, 1)' }
                 }
             }
         }
     </script>
+    
     <style>
         body{ background: #07060a; color: #e2e8f0; }
         .bg-layer{ position: fixed; inset: 0; z-index: -2; background: #0f172a; }
         .lib-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; }
         .lib-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); border-color: rgba(210,178,106,0.5); }
-        .chip-on { background: rgba(210,178,106,0.9) !important; color: #000 !important; font-weight: bold; }
+        .chip-on { background: rgba(210,178,106,0.9) !important; color: #000 !important; font-weight: bold; border-color: transparent !important; }
     </style>
 </head>
 <body class="antialiased">
@@ -46,50 +47,140 @@
                 <h1 class="font-serif text-3xl md:text-4xl font-black text-white">Archives</h1>
                 <p class="text-slate-400 mt-2">全作品データベース</p>
             </div>
-            <div class="flex gap-2 bg-white/5 p-1 rounded-xl">
-                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5" data-status="">All</button>
-                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5" data-status="ongoing">Ongoing</button>
-                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5" data-status="completed">Completed</button>
-                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5" data-status="oneshot">Shorts</button>
+            <div class="flex gap-2 bg-white/5 p-1 rounded-xl overflow-x-auto">
+                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5 whitespace-nowrap" data-status="">すべて</button>
+                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5 whitespace-nowrap" data-status="ongoing">進行中</button>
+                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5 whitespace-nowrap" data-status="completed">完結</button>
+                <button class="tab px-4 py-2 rounded-lg text-sm transition hover:bg-white/5 whitespace-nowrap" data-status="oneshot">単発・短編</button>
             </div>
         </div>
 
-        <input id="q" type="text" placeholder="キーワード検索..." class="w-full md:w-1/2 mb-8 px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-orange-300 transition">
-
-        <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="mb-10 space-y-4">
+            <div class="relative w-full md:w-1/2">
+                <input id="q" type="text" placeholder="キーワード検索（タイトル・概要）..." 
+                    class="w-full px-4 py-3 pr-10 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-orange-300 transition text-slate-100 placeholder:text-slate-500">
+                <button id="clearSearch" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white hidden transition p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                    </svg>
+                </button>
             </div>
+            <div class="bg-white/5 border border-white/5 rounded-2xl p-4">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex justify-between items-center">
+                    <span>Filter by Tags</span>
+                    <button id="clearTags" class="text-xs text-orange-300 hover:text-orange-200 hidden">Clear All</button>
+                </div>
+                <div id="tagBar" class="flex flex-wrap gap-2"></div>
+            </div>
+        </div>
+
+        <div id="contentArea" class="space-y-12 min-h-[300px]"></div>
     </main>
 
     <script>
-        // Minimal logic for maximized speed
+        // ----------------------------------------------------
+        // グローバル変数と初期設定
+        // ----------------------------------------------------
         let ALL = [];
-        const grid = document.getElementById('grid');
+        let TAG_COUNTS = {};
+        let selectedTags = new Set();
+        const contentArea = document.getElementById('contentArea');
         const qInput = document.getElementById('q');
         const tabs = document.querySelectorAll('.tab');
+        const tagBar = document.getElementById('tagBar');
+        const clearTagsBtn = document.getElementById('clearTags');
+        const clearSearchBtn = document.getElementById('clearSearch');
 
-        async function load() {
-            try {
-                const d = await (await fetch('./data.json')).json();
-                const s = (d.series || []).map(x => ({...x, type: 'series'}));
-                const o = (d.oneshots || []).map(x => ({...x, type: 'oneshot', status:'oneshot'}));
-                ALL = [...s, ...o];
-                render();
-            } catch(e){ grid.innerHTML = '<div class="col-span-3 text-center">Loading Failed.</div>'; }
+        // ヘルパー関数
+        function getParam(name) { return new URLSearchParams(window.location.search).get(name); }
+        function formatDate(dateStr) { if(!dateStr) return ''; return dateStr.replace(/-/g, '.'); }
+
+        // YouTube ID抽出
+        function getYouTubeId(url) {
+            if (!url) return null;
+            const regExp = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+            const match = url.match(regExp);
+            return match ? match[1] : null;
         }
 
-        function render(filterStatus = '') {
-            const term = qInput.value.toLowerCase();
-            const filtered = ALL.filter(item => {
-                const matchText = (item.title + item.summary + (item.tags||[])).toLowerCase().includes(term);
-                const matchStatus = filterStatus ? item.status === filterStatus : true;
-                return matchText && matchStatus;
+        // 画像の存在チェック（404エラー回避用）
+        function checkImage(url) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => resolve(true);
+                img.onerror = () => resolve(false);
+                img.src = url;
             });
+        }
 
-            grid.innerHTML = filtered.map(item => `
-                <a href="${item.type === 'oneshot' ? 'oneshot.html' : 'series.html'}?slug=${item.slug}" class="lib-card rounded-2xl overflow-hidden block group h-full flex flex-col">
-                    <div class="h-48 bg-cover bg-center" style="background-image:url('${item.thumb || "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600"}')"></div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <div class="text-xs font-bold text-orange-300 mb-1 uppercase">${item.status}</div>
+        // 適切なサムネイルを選択
+        async function determineThumb(item) {
+            if (item.thumb) return item.thumb;
+            let vid = null;
+            if (item.type === 'series' && item.episodes && item.episodes.length > 0) {
+                vid = getYouTubeId(item.episodes[0].url);
+            } else if (item.url) {
+                vid = getYouTubeId(item.url);
+            }
+
+            if (vid) {
+                const maxRes = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
+                const hqRes = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
+                const exists = await checkImage(maxRes);
+                return exists ? maxRes : hqRes;
+            }
+            return "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600";
+        }
+
+        // ----------------------------------------------------
+        // カードHTML生成（ここを修正）
+        // ----------------------------------------------------
+        function createCardHtml(item) {
+            const thumbUrl = item.finalThumb;
+
+            // 日付と「NEW」バッジの判定
+            let dateLabel = '更新';
+            let dateValue = item.updatedAt || item.publishedAt;
+            let isNew = false;
+            if (dateValue) {
+                const diffDays = (new Date() - new Date(dateValue)) / (1000 * 60 * 60 * 24);
+                if (diffDays <= 14) isNew = true;
+            }
+
+            if (item.status === 'completed') dateLabel = '完結';
+            else if (item.status === 'oneshot') {
+                dateLabel = '公開';
+                dateValue = item.publishedAt || item.updatedAt;
+            }
+
+            // ▼▼▼ ステータスと話数・総集編数のテキスト構築 ▼▼▼
+            let statusText = item.status === 'oneshot' ? 'ONESHOT' : item.status.toUpperCase();
+            
+            if (item.type === 'series') {
+                // 通常のエピソード数
+                const epCount = item.episodes ? item.episodes.length : 0;
+                statusText += ` / 全${epCount}話`;
+
+                // 総集編がある場合のみ「+ 総集編〇本」を追加
+                if (item.compilations && item.compilations.length > 0) {
+                    statusText += ` + 総集編${item.compilations.length}本`;
+                }
+            }
+            // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+            return `
+                <a href="${item.type === 'oneshot' ? 'oneshot.html' : 'series.html'}?slug=${item.slug}" class="lib-card rounded-2xl overflow-hidden block group h-full flex flex-col relative">
+                    <div class="h-40 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" 
+                         style="background-image:url('${thumbUrl}')"></div>
+                    
+                    <div class="absolute top-2 right-2 bg-black/70 backdrop-blur px-2 py-1 rounded-md border border-white/10 text-[10px] text-white font-mono z-10">
+                        <span class="text-slate-400 mr-1">${dateLabel}</span>${formatDate(dateValue)}
+                    </div>
+
+                    ${isNew ? `<div class="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg animate-pulse z-10">NEW</div>` : ''}
+
+                    <div class="p-5 flex-1 flex flex-col relative z-10 bg-[#07060a]"> 
+                        <div class="text-xs font-bold text-orange-300 mb-1 uppercase">${statusText}</div>
                         <h3 class="font-serif text-lg font-bold text-white mb-2 leading-snug">${item.title}</h3>
                         <p class="text-xs text-slate-400 line-clamp-2 mb-4 flex-1">${item.summary || ''}</p>
                         <div class="flex flex-wrap gap-1 mt-auto">
@@ -97,19 +188,135 @@
                         </div>
                     </div>
                 </a>
-            `).join('');
+            `;
+        }
+
+        // ----------------------------------------------------
+        // データ読み込みと初期化
+        // ----------------------------------------------------
+        async function load() {
+            try {
+                contentArea.innerHTML = '<div class="text-center text-slate-500 py-20">Loading...</div>';
+
+                const d = await (await fetch('./data.json')).json();
+                const s = (d.series || []).map(x => ({...x, type: 'series'}));
+                const o = (d.oneshots || []).map(x => ({...x, type: 'oneshot', status:'oneshot'}));
+                ALL = [...s, ...o];
+                
+                // 更新日順にソート
+                ALL.sort((a, b) => {
+                    const dateA = new Date(a.updatedAt || a.publishedAt || 0);
+                    const dateB = new Date(b.updatedAt || b.publishedAt || 0);
+                    return dateB - dateA; 
+                });
+
+                // サムネイルの事前処理
+                await Promise.all(ALL.map(async (item) => {
+                    item.finalThumb = await determineThumb(item);
+                }));
+
+                buildTagUniverse();
+                renderTags();
+                const pStatus = getParam('status');
+                if (pStatus) activateTab(pStatus);
+                else activateTab("");
+                updateView();
+            } catch(e){ 
+                console.error(e); 
+                contentArea.innerHTML = '<div class="text-center text-slate-500">Loading Failed.</div>'; 
+            }
+        }
+
+        // ----------------------------------------------------
+        // フィルタリング・検索・表示制御
+        // ----------------------------------------------------
+        function buildTagUniverse() {
+            TAG_COUNTS = {};
+            ALL.forEach(item => { (item.tags || []).forEach(t => TAG_COUNTS[t] = (TAG_COUNTS[t] || 0) + 1); });
+        }
+
+        function renderTags() {
+            const sortedTags = Object.keys(TAG_COUNTS).sort((a, b) => TAG_COUNTS[b] - TAG_COUNTS[a]);
+            tagBar.innerHTML = sortedTags.map(tag => {
+                const isSelected = selectedTags.has(tag);
+                return `<button class="tag-btn px-3 py-1.5 rounded-lg border border-white/10 text-xs transition hover:bg-white/10 ${isSelected ? 'chip-on' : 'bg-white/5 text-slate-300'}" data-tag="${tag}">${tag} <span class="opacity-60 ml-1 text-[10px]">(${TAG_COUNTS[tag]})</span></button>`;
+            }).join('');
+            document.querySelectorAll('.tag-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tag = btn.dataset.tag;
+                    if (selectedTags.has(tag)) selectedTags.delete(tag); else selectedTags.add(tag);
+                    renderTags(); updateView();
+                });
+            });
+            clearTagsBtn.classList.toggle('hidden', selectedTags.size === 0);
+        }
+
+        clearTagsBtn.addEventListener('click', () => { selectedTags.clear(); renderTags(); updateView(); });
+
+        function updateView() {
+            const currentStatus = document.querySelector('.chip-on.tab')?.dataset.status || "";
+            const term = qInput.value.trim().toLowerCase();
+            const hasTags = selectedTags.size > 0;
+            const hasSearch = term.length > 0;
+            const hasStatus = currentStatus !== "";
+            if (!hasTags && !hasSearch && !hasStatus) renderGrouped(); else renderFiltered(currentStatus, term);
+        }
+
+        function renderGrouped() {
+            const ongoing = ALL.filter(x => x.status === 'ongoing');
+            const completed = ALL.filter(x => x.status === 'completed');
+            const oneshot = ALL.filter(x => x.status === 'oneshot');
+            const createSection = (title, items) => {
+                if (items.length === 0) return '';
+                return `<section><h2 class="font-serif text-2xl font-bold text-white mb-4 border-l-4 border-orange-300 pl-4">${title}</h2><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">${items.map(createCardHtml).join('')}</div></section>`;
+            };
+            contentArea.innerHTML = `${createSection('進行中作品 (Ongoing)', ongoing)}${createSection('完結作品 (Completed)', completed)}${createSection('単発・短編 (One-shot)', oneshot)}`;
+        }
+
+        function renderFiltered(status, term) {
+            const filtered = ALL.filter(item => {
+                if (status && item.status !== status) return false;
+                if (term) {
+                    const text = (item.title + item.summary + (item.tags||[])).toLowerCase();
+                    if (!text.includes(term)) return false;
+                }
+                if (selectedTags.size > 0) {
+                    const itemTags = new Set(item.tags || []);
+                    for (const t of selectedTags) if (!itemTags.has(t)) return false;
+                }
+                return true;
+            });
+            if (filtered.length === 0) { 
+                contentArea.innerHTML = `<div class="text-center text-slate-500 py-10">条件に一致する作品が見つかりません。</div>`; 
+                return; 
+            }
+            contentArea.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">${filtered.map(createCardHtml).join('')}</div>`;
+        }
+
+        function activateTab(statusVal) {
+            tabs.forEach(t => { if(t.dataset.status === statusVal) t.classList.add('chip-on'); else t.classList.remove('chip-on'); });
         }
 
         tabs.forEach(t => t.addEventListener('click', e => {
-            tabs.forEach(x => x.classList.remove('chip-on'));
-            e.target.classList.add('chip-on');
-            render(e.target.dataset.status);
+            activateTab(e.target.dataset.status);
+            const newUrl = e.target.dataset.status ? `?status=${e.target.dataset.status}` : window.location.pathname;
+            window.history.pushState({}, '', newUrl); 
+            updateView();
         }));
 
-        qInput.addEventListener('input', () => render(document.querySelector('.chip-on')?.dataset.status || ''));
-        
-        // Initial State
-        tabs[0].classList.add('chip-on');
+        qInput.addEventListener('input', () => {
+            clearSearchBtn.classList.toggle('hidden', qInput.value === '');
+            updateView();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            qInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            updateView();
+            qInput.focus();
+        });
+
+        // 実行開始
         load();
     </script>
 </body>

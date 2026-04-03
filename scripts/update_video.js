@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// ▼▼▼ ここに取得したチャンネルIDを入力してください ▼▼▼
+// ▼▼▼ チャンネルID ▼▼▼
 const CHANNEL_ID = 'UC__HgxNLA3yR6FE9H-kvXYQ'; 
 // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 

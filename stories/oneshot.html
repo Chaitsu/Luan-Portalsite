@@ -3,234 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>One-shot | Luan's Arcane Archives</title>
-
+  <title>One-shot Detail | Luan's Arcane Archives</title>
+  <link rel="icon" href="../images/Icon.jpg">
+  
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['"Noto Sans JP"', 'sans-serif'],
-            serif: ['"Noto Serif JP"', 'serif'],
-          }
+          fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'], serif: ['"Noto Serif JP"', 'serif'] },
+          colors: { gold: 'rgba(210,178,106, 1)' }
         }
       }
     }
   </script>
-
   <style>
-    :root{
-      --ink: 226 232 240;
-      --muted: 148 163 184;
-      --bg0: 7 6 10;
-      --wine: 88 12 26;
-      --scarlet: 160 20 50;
-      --gold: 210 178 106;
-    }
-    body{ color: rgb(var(--ink)); background: rgb(var(--bg0)); }
-    .bg-fixed-layer{
-      position: fixed; inset: 0; z-index:-2;
-      background-image:
-        radial-gradient(900px 520px at 18% 35%, rgba(var(--scarlet), .20), transparent 60%),
-        radial-gradient(750px 450px at 72% 25%, rgba(var(--gold), .12), transparent 55%),
-        url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2400&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.05) contrast(1.05);
-    }
-    .bg-overlay{
-      position: fixed; inset:0; z-index:-1;
-      background:
-        linear-gradient(to bottom, rgba(10, 6, 10, .55), rgba(7, 6, 10, .92)),
-        radial-gradient(1200px 720px at 50% 80%, rgba(var(--wine), .28), transparent 60%);
-      backdrop-filter: blur(5px);
-    }
-    .lib-card{
-      border: 1px solid rgba(var(--gold), .16);
-      background: rgba(255,255,255,.045);
-      box-shadow: 0 22px 60px rgba(0,0,0,.50);
-    }
-    .lib-card:hover{
-      border-color: rgba(var(--gold), .28);
-      background: rgba(255,255,255,.06);
-    }
-    a:focus-visible, button:focus-visible{
-      outline: 2px solid rgba(var(--gold), .55);
-      outline-offset: 3px;
-      border-radius: 14px;
-    }
+    body{ background: #07060a; color: #e2e8f0; }
+    .bg-layer{ position: fixed; inset: 0; z-index: -2; background: #0f172a; }
+    .lib-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
   </style>
-<link rel="stylesheet" href="../assets/theme.css">
-
 </head>
-
 <body class="antialiased">
-  <div class="bg-fixed-layer"></div>
-  <div class="bg-overlay"></div>
+  <div class="bg-layer"></div>
 
   <header class="sticky top-0 z-50 px-4 py-4">
-    <nav class="max-w-6xl mx-auto bg-black/45 backdrop-blur-md border border-white/10 rounded-3xl px-5 py-4 flex items-center justify-between">
-      <a href="../index.html" class="font-serif font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--gold))] to-slate-200">
-        Luan's Arcane Archives
-      </a>
-      <div class="flex gap-2">
-        <a href="index.html?status=oneshot" class="px-4 py-2 rounded-2xl bg-white/5 hover:bg-white/10 transition text-sm">← 単発・短編作品一覧へ</a>
-        <a href="../index.html" class="px-4 py-2 rounded-2xl bg-white/5 hover:bg-white/10 transition text-sm">Home</a>
+    <nav class="max-w-6xl mx-auto bg-black/80 backdrop-blur border border-white/10 rounded-full px-5 py-3 flex items-center justify-between">
+      <a href="../index.html" class="font-serif font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-slate-200">Luan's Archives</a>
+      <div class="flex gap-3 text-sm">
+        <a href="index.html" class="hover:text-white transition">← Back</a>
       </div>
     </nav>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 pb-20">
-    <section class="mt-6 lib-card rounded-3xl overflow-hidden">
-      <div id="heroImg" class="h-56 md:h-72 bg-cover bg-center opacity-90"></div>
-      <div class="p-6 md:p-8">
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <div id="meta" class="text-sm text-slate-300"></div>
-            <h1 id="title" class="mt-1 font-serif text-3xl md:text-4xl font-black text-white">Loading...</h1>
-          </div>
-          <a id="watch" href="#" target="_blank" rel="noopener"
-             class="px-5 py-3 rounded-2xl font-bold text-black bg-[rgba(210,178,106,.95)] hover:opacity-90 transition">
-            視聴する →
+  <main class="max-w-4xl mx-auto px-4 pb-20 pt-8">
+    
+    <nav class="flex text-xs md:text-sm text-slate-400 mb-6" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-2">
+        <li class="inline-flex items-center">
+          <a href="../index.html" class="hover:text-white transition flex items-center">
+             <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+             Home
           </a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <span class="mx-2 text-slate-600">/</span>
+            <a href="index.html" class="hover:text-white transition">Archives</a>
+          </div>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <span class="mx-2 text-slate-600">/</span>
+            <span id="breadcrumbTitle" class="text-white font-bold truncate max-w-[150px] md:max-w-xs">Loading...</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    <section id="hero" class="lib-card rounded-3xl overflow-hidden mb-10">
+      <div id="heroImg" class="h-64 md:h-96 bg-cover bg-center transition-all duration-700"></div>
+      <div class="p-8">
+        <div class="flex items-center gap-3 mb-4">
+            <span class="text-xs font-bold text-orange-300 uppercase tracking-widest border border-orange-500/30 px-2 py-1 rounded">One-shot</span>
+            <span id="dateMeta" class="text-xs text-slate-500 font-mono"></span>
         </div>
-
-        <p id="summary" class="mt-4 text-slate-200/90 leading-relaxed"></p>
-        <div id="tags" class="mt-4 flex flex-wrap gap-2"></div>
+        
+        <h1 id="title" class="font-serif text-3xl md:text-5xl font-black text-white mb-6 leading-tight">Loading...</h1>
+        
+        <p id="summary" class="text-slate-300 leading-relaxed mb-8 text-lg"></p>
+        
+        <div id="tags" class="flex flex-wrap gap-2 mb-8"></div>
+        
+        <div class="flex flex-wrap gap-4">
+            <a id="mainLink" href="#" target="_blank" class="inline-flex items-center px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-bold transition shadow-lg shadow-red-900/20">
+                <span>▶ YouTubeで観る</span>
+            </a>
+            
+            <a id="subLink" href="#" target="_blank" class="hidden inline-flex items-center px-6 py-4 bg-white/5 hover:bg-white/10 text-white rounded-full font-bold transition border border-white/10">
+                ニコニコ動画
+            </a>
+        </div>
       </div>
-    </section>
-
-    <section class="mt-6 lib-card rounded-3xl p-6 md:p-8">
-      <h2 class="font-serif text-2xl font-black text-white">Related</h2>
-      <p class="text-slate-300 text-sm mt-1">タグが近い作品（最大6件）</p>
-      <div id="related" class="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
     </section>
   </main>
 
   <script>
     const $ = (s) => document.querySelector(s);
+    function getSlug(){ return new URLSearchParams(location.search).get("slug") || ""; }
+    function formatDate(d){ return d ? d.replace(/-/g, '.') : ''; }
 
-    function getSlug(){
-      return new URLSearchParams(location.search).get("slug") || "";
-    }
-    function escapeHtml(str){
-      return String(str).replace(/[&<>"']/g, s => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-      }[s]));
-    }
-    function ytThumb(videoId){
-      return [
-        `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
-        `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
-      ];
-    }
-    function resolveThumb(item){
-      if(item.thumb) return item.thumb;
-      if(item.videoId) return ytThumb(item.videoId)[0];
-      return "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1800&auto=format&fit=crop";
-    }
-    function parseDateSafe(v){
-      const d = v ? new Date(v) : null;
-      return (d && !isNaN(d.getTime())) ? d : null;
+    function getYouTubeId(url) {
+        if (!url) return null;
+        const regExp = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match = url.match(regExp);
+        return match ? match[1] : null;
     }
 
-    async function loadData(){
-      const res = await fetch("./data.json", { cache:"no-store" });
-      if(!res.ok) throw new Error("failed to load data.json");
-      return res.json();
+    // ▼▼▼ 画像の生存確認を行う関数 ▼▼▼
+    function checkImage(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+        });
     }
 
-    function scoreByTags(baseTags, candidateTags){
-      const a = new Set((baseTags || []).filter(t => t !== "単発"));
-      const b = new Set((candidateTags || []).filter(t => t !== "単発"));
-      let score = 0;
-      for(const t of a) if(b.has(t)) score++;
-      return score;
-    }
-
-    function card(item){
-      const href = item.type === "oneshot"
-        ? `oneshot.html?slug=${encodeURIComponent(item.slug)}`
-        : `series.html?slug=${encodeURIComponent(item.slug)}`;
-
-      const badge = item.type === "oneshot" ? "単発" : (item.status === "completed" ? "完結" : "進行中");
-
-      return `
-        <a href="${href}" class="group lib-card rounded-3xl overflow-hidden transition block">
-          <div class="h-40 bg-cover bg-center opacity-85 group-hover:opacity-100 transition"
-               style="background-image:url('${resolveThumb(item)}')"></div>
-          <div class="p-5">
-            <div class="text-xs font-bold text-[rgb(210,178,106)]">${badge}</div>
-            <div class="mt-2 font-serif text-lg font-black text-white">${escapeHtml(item.title)}</div>
-            <div class="mt-2 text-sm text-slate-300 line-clamp-2">${escapeHtml(item.summary || "")}</div>
-            <div class="mt-4 inline-flex items-center text-sm font-bold text-[rgb(210,178,106)] group-hover:translate-x-1 transition-transform">
-              開く →
-            </div>
-          </div>
-        </a>
-      `;
-    }
-
-    (async function init(){
+    async function init(){
       const slug = getSlug();
-      const data = await loadData();
-
-      const oneshots = (data.oneshots || []).map(o => ({...o, type:"oneshot", status:"oneshot"}));
-      const series = (data.series || []).map(s => ({...s, type:"series"}));
-
-      const item = oneshots.find(o => o.slug === slug);
+      const data = await (await fetch("./data.json")).json();
+      const item = (data.oneshots || []).find(s => s.slug === slug);
 
       if(!item){
-        $("#title").textContent = "単発作品が見つかりません";
-        $("#summary").textContent = "URLの slug が正しいか、data.json に登録されているか確認してください。";
-        $("#watch").classList.add("hidden");
-        $("#related").innerHTML = `<a href="index.html?status=oneshot" class="px-5 py-3 rounded-2xl font-bold text-black bg-[rgba(210,178,106,.95)] inline-flex hover:opacity-90 transition">単発一覧へ戻る →</a>`;
+        $('#title').textContent = "Not Found";
+        $('#breadcrumbTitle').textContent = "Not Found";
         return;
       }
 
-      document.title = `${item.title} | Luan's Arcane Archives`;
+      document.title = `${item.title} | Luan's Archives`;
 
-      $("#heroImg").style.backgroundImage = `url('${resolveThumb(item)}')`;
+      // ▼▼▼ サムネイル自動判定 (高画質優先ロジック) ▼▼▼
+      let heroThumb = item.thumb;
+      if (!heroThumb && item.url) {
+          const vid = getYouTubeId(item.url);
+          if (vid) {
+              const maxRes = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
+              const hqRes = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
+              
+              // 最高画質が存在するかチェック
+              const exists = await checkImage(maxRes);
+              heroThumb = exists ? maxRes : hqRes;
+          }
+      }
+      if (!heroThumb) heroThumb = "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200"; 
+      
+      $('#heroImg').style.backgroundImage = `url('${heroThumb}')`;
+      // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
-      const pub = parseDateSafe(item.publishedAt);
-      $("#meta").textContent = pub ? `単発 / 公開：${pub.toLocaleDateString("ja-JP")}` : "単発";
-      $("#title").textContent = item.title || "";
-      $("#summary").textContent = item.summary || "";
+      $('#dateMeta').textContent = formatDate(item.publishedAt || item.updatedAt);
+      $('#title').textContent = item.title;
+      $('#breadcrumbTitle').textContent = item.title; // パンくず用
+      $('#summary').textContent = item.summary;
+      $('#tags').innerHTML = (item.tags||[]).map(t => `<span class="px-3 py-1 bg-white/10 rounded-full text-xs">${t}</span>`).join('');
+      
+      const btn = $('#mainLink');
+      if(item.url) btn.href = item.url;
+      else btn.classList.add('hidden');
 
-      const tags = (item.tags || []).map(t =>
-        `<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs">${escapeHtml(t)}</span>`
-      ).join("");
-      $("#tags").innerHTML = tags;
-
-      const watch = $("#watch");
-      watch.href = item.url || "https://www.youtube.com/";
-      if(!item.url) watch.classList.add("hidden");
-
-      // related: タグ共通でスコア
-      const candidates = [...series, ...oneshots].filter(x => x.slug !== item.slug);
-      const scored = candidates
-        .map(x => ({ x, s: scoreByTags(item.tags, x.tags) }))
-        .filter(o => o.s > 0)
-        .sort((a,b) => b.s - a.s)
-        .slice(0, 6)
-        .map(o => o.x);
-
-      $("#related").innerHTML = scored.length
-        ? scored.map(card).join("")
-        : `<div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-slate-200">関連作品がまだありません。</div>`;
-
-    })().catch(err => {
-      console.error(err);
-      $("#title").textContent = "読み込みに失敗しました";
-      $("#summary").textContent = "./data.json が見つからないか、HTTP配信されていない可能性があります。";
-      $("#watch").classList.add("hidden");
-    });
+      // ニコニコなどのサブリンク
+      if(item.links?.niconico) {
+          $('#subLink').href = item.links.niconico;
+          $('#subLink').classList.remove('hidden');
+      }
+    }
+    init();
   </script>
 </body>
 </html>

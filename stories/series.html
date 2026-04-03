@@ -3,215 +3,241 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Series | Luan's Arcane Archives</title>
-
+  <title>Series Detail | Luan's Arcane Archives</title>
+  <link rel="icon" href="../images/Icon.jpg">
+  
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['"Noto Sans JP"', 'sans-serif'],
-            serif: ['"Noto Serif JP"', 'serif'],
-          }
+          fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'], serif: ['"Noto Serif JP"', 'serif'] },
+          colors: { gold: 'rgba(210,178,106, 1)' }
         }
       }
     }
   </script>
-
+  
   <style>
-    :root{
-      --ink: 226 232 240;
-      --muted: 148 163 184;
-      --bg0: 7 6 10;
-      --wine: 88 12 26;
-      --scarlet: 160 20 50;
-      --gold: 210 178 106;
-    }
-    body{ color: rgb(var(--ink)); background: rgb(var(--bg0)); }
-    .bg-fixed-layer{
-      position: fixed; inset: 0; z-index:-2;
-      background-image:
-        radial-gradient(900px 520px at 18% 35%, rgba(var(--scarlet), .20), transparent 60%),
-        radial-gradient(750px 450px at 72% 25%, rgba(var(--gold), .12), transparent 55%),
-        url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2400&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.05) contrast(1.05);
-    }
-    .bg-overlay{
-      position: fixed; inset:0; z-index:-1;
-      background:
-        linear-gradient(to bottom, rgba(10, 6, 10, .55), rgba(7, 6, 10, .92)),
-        radial-gradient(1200px 720px at 50% 80%, rgba(var(--wine), .28), transparent 60%);
-      backdrop-filter: blur(5px);
-    }
-    .lib-card{
-      border: 1px solid rgba(var(--gold), .16);
-      background: rgba(255,255,255,.045);
-      box-shadow: 0 22px 60px rgba(0,0,0,.50);
-    }
-    .lib-card:hover{
-      border-color: rgba(var(--gold), .28);
-      background: rgba(255,255,255,.06);
-    }
+    body{ background: #07060a; color: #e2e8f0; }
+    .bg-layer{ position: fixed; inset: 0; z-index: -2; background: #0f172a; }
+    .lib-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
   </style>
-<link rel="stylesheet" href="../assets/theme.css">
-
 </head>
-
 <body class="antialiased">
-  <div class="bg-fixed-layer"></div>
-  <div class="bg-overlay"></div>
+  <div class="bg-layer"></div>
 
   <header class="sticky top-0 z-50 px-4 py-4">
-    <nav class="max-w-6xl mx-auto bg-black/45 backdrop-blur-md border border-white/10 rounded-3xl px-5 py-4 flex items-center justify-between">
-      <!-- ✅ ルートへ -->
-      <a href="../index.html" class="font-serif font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--gold))] to-slate-200">
-        Luan's Arcane Archives
-      </a>
-      <div class="flex gap-2">
-        <!-- ✅ 同階層 -->
-        <a href="index.html" class="px-4 py-2 rounded-2xl bg-white/5 hover:bg-white/10 transition text-sm">← 一覧へ</a>
-        <!-- ✅ ルート -->
-        <a href="../index.html" class="px-4 py-2 rounded-2xl bg-white/5 hover:bg-white/10 transition text-sm">Home</a>
+    <nav class="max-w-6xl mx-auto bg-black/80 backdrop-blur border border-white/10 rounded-full px-5 py-3 flex items-center justify-between">
+      <a href="../index.html" class="font-serif font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-slate-200">Luan's Archives</a>
+      <div class="flex gap-3 text-sm">
+        <a href="index.html" class="hover:text-white transition">← Back</a>
       </div>
     </nav>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 pb-20">
-    <section id="hero" class="mt-6 lib-card rounded-3xl overflow-hidden">
-      <div id="heroImg" class="h-56 md:h-72 bg-cover bg-center opacity-90"></div>
-      <div class="p-6 md:p-8">
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <div id="meta" class="text-sm text-slate-300"></div>
-            <h1 id="title" class="mt-1 font-serif text-3xl md:text-4xl font-black text-white">Loading...</h1>
-          </div>
-          <a id="yt" href="#" target="_blank"
-             class="px-5 py-3 rounded-2xl font-bold text-black bg-[rgba(210,178,106,.95)] hover:opacity-90 transition">
-            YouTubeで見る →
+  <main class="max-w-4xl mx-auto px-4 pb-20 pt-8">
+    
+    <nav class="flex text-xs md:text-sm text-slate-400 mb-6" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-2">
+        <li class="inline-flex items-center">
+          <a href="../index.html" class="hover:text-white transition flex items-center">
+             <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+             Home
           </a>
-        </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <span class="mx-2 text-slate-600">/</span>
+            <a href="index.html" class="hover:text-white transition">Archives</a>
+          </div>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <span class="mx-2 text-slate-600">/</span>
+            <span id="breadcrumbTitle" class="text-white font-bold truncate max-w-[150px] md:max-w-xs">Loading...</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
 
-        <p id="summary" class="mt-4 text-slate-200/90 leading-relaxed"></p>
-        <div id="tags" class="mt-4 flex flex-wrap gap-2"></div>
+    <section id="hero" class="lib-card rounded-3xl overflow-hidden mb-10">
+      <div id="heroImg" class="h-64 bg-cover bg-center"></div>
+      <div class="p-8">
+        <div class="text-xs font-bold text-orange-300 mb-2" id="meta"></div>
+        <h1 id="title" class="font-serif text-3xl md:text-4xl font-black text-white mb-4">Loading...</h1>
+        <p id="summary" class="text-slate-300 leading-relaxed mb-6"></p>
+        <div id="tags" class="flex flex-wrap gap-2"></div>
+        <div class="mt-8">
+            <a id="ytLink" href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-bold transition">
+                <span>▶ YouTubeで再生リストを見る</span>
+            </a>
+        </div>
       </div>
     </section>
 
-    <section class="mt-6 lib-card rounded-3xl p-6 md:p-8">
-      <h2 class="font-serif text-2xl font-black text-white">Episodes</h2>
-      <p class="text-slate-300 text-sm mt-1">※ URLが入っているものだけリンクになります。</p>
-      <div id="episodes" class="mt-5 grid gap-3"></div>
-    </section>
-  </main>
+    <h2 class="font-serif text-2xl font-bold text-white mb-6 pl-2 border-l-4 border-orange-300">Episodes</h2>
+    <div id="episodes" class="space-y-4"></div>
+
+    <div id="compilationWrapper" class="hidden mt-12">
+      <h2 class="font-serif text-2xl font-bold text-white mb-6 pl-2 border-l-4 border-red-500">Compilations / 総集編</h2>
+      <div id="compilations" class="space-y-4"></div>
+    </div>
+    </main>
 
   <script>
     const $ = (s) => document.querySelector(s);
+    function getSlug(){ return new URLSearchParams(location.search).get("slug") || ""; }
+    function formatDate(d){ return d ? d.replace(/-/g, '.') : ''; }
 
-    function getSlug(){
-      const p = new URLSearchParams(location.search);
-      return p.get("slug") || "";
+    function getYouTubeId(url) {
+        if (!url) return null;
+        const regExp = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match = url.match(regExp);
+        return match ? match[1] : null;
     }
 
-    function escapeHtml(str){
-      return String(str).replace(/[&<>"']/g, s => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-      }[s]));
-    }
-
-    async function loadData(){
-      // ✅ 同階層
-      const res = await fetch("./data.json", { cache:"no-store" });
-      if(!res.ok) throw new Error("failed to load data.json");
-      return res.json();
-    }
-
-    function badge(status){
-      const map = { ongoing:"進行中", completed:"完結", oneshot:"単発" };
-      return map[status] || status;
-    }
-
-    function render(series){
-      document.title = `${series.title} | Luan's Arcane Archives`;
-
-      $("#heroImg").style.backgroundImage = `url('${series.thumb || ""}')`;
-      $("#meta").textContent = `${badge(series.status)} / ${series.group || ""}`;
-      $("#title").textContent = series.title || "";
-      $("#summary").textContent = series.summary || "";
-
-      const tags = (series.tags || []).map(t =>
-        `<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs">${escapeHtml(t)}</span>`
-      ).join("");
-      $("#tags").innerHTML = tags;
-
-      const yt = $("#yt");
-      yt.href = (series.links && series.links.youtubePlaylist) ? series.links.youtubePlaylist : "https://www.youtube.com/";
-      if(!yt.href) yt.classList.add("hidden");
-
-      const episodes = series.episodes || [];
-      if(episodes.length === 0){
-        $("#episodes").innerHTML = `
-          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-slate-200">
-            まだエピソードが登録されていません。data.json の episodes に追加してください。
-          </div>
-        `;
-        return;
-      }
-
-      $("#episodes").innerHTML = episodes.map(ep => {
-        const title = escapeHtml(ep.title || `Episode ${ep.no ?? ""}`);
-        const no = ep.no != null ? `#${ep.no}` : "";
-        const url = ep.url || "";
-        if(url){
-          return `
-            <a href="${url}" target="_blank" class="block rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition p-5">
-              <div class="text-xs text-slate-300">${no}</div>
-              <div class="font-bold text-white mt-1">${title}</div>
-              <div class="text-sm text-[rgb(210,178,106)] mt-2">視聴する →</div>
-            </a>
-          `;
+    window.toggleSummary = function(index) {
+        const textEl = document.getElementById(`desc-${index}`);
+        const btnEl = document.getElementById(`btn-${index}`);
+        if (textEl.classList.contains('line-clamp-2')) {
+            textEl.classList.remove('line-clamp-2');
+            btnEl.textContent = '閉じる';
+            btnEl.classList.add('text-slate-500');
+        } else {
+            textEl.classList.add('line-clamp-2');
+            btnEl.textContent = '...もっと見る';
+            btnEl.classList.remove('text-slate-500');
         }
-        return `
-          <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-            <div class="text-xs text-slate-300">${no}</div>
-            <div class="font-bold text-white mt-1">${title}</div>
-          </div>
-        `;
-      }).join("");
-    }
+    };
 
-    (async function init(){
+    async function init(){
       const slug = getSlug();
-      const data = await loadData();
-      const list = data.series || [];
-      const series = list.find(s => s.slug === slug);
+      const data = await (await fetch("./data.json")).json();
+      const series = (data.series || []).find(s => s.slug === slug);
 
       if(!series){
-        $("#title").textContent = "シリーズが見つかりません";
-        $("#summary").textContent = "URLの slug が正しいか、data.json に登録されているか確認してください。";
-        $("#yt").classList.add("hidden");
-        $("#episodes").innerHTML = `
-          <!-- ✅ -->
-          <a href="index.html" class="inline-flex mt-4 px-5 py-3 rounded-2xl bg-[rgba(210,178,106,.95)] text-black font-bold hover:opacity-90 transition">
-            一覧へ戻る →
-          </a>
-        `;
+        $('#title').textContent = "Not Found";
+        $('#breadcrumbTitle').textContent = "Not Found";
         return;
       }
 
-      render(series);
-    })().catch(err => {
-      console.error(err);
-      $("#title").textContent = "読み込みに失敗しました";
-      $("#summary").textContent = "./data.json が見つからない可能性があります。";
-      $("#yt").classList.add("hidden");
-    });
+      let heroThumb = series.thumb;
+      if (!heroThumb && series.episodes && series.episodes.length > 0) {
+          const vid = getYouTubeId(series.episodes[0].url);
+          if(vid) heroThumb = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
+      }
+      $('#heroImg').style.backgroundImage = `url('${heroThumb || ""}')`;
+
+      // ---------------------------------------------------------
+      // メタデータ適用（状態、話数、総集編有無）
+      // ---------------------------------------------------------
+      let metaText = `${series.status.toUpperCase()} / 全${series.episodes?.length || 0}話`;
+      
+      // 総集編がある場合に「 / 総集編あり」を追記
+      if (series.compilations && series.compilations.length > 0) {
+          metaText += ` + 総集編${series.compilations?.length || 0}本`;
+      }
+      
+      $('#meta').textContent = metaText;
+      // ---------------------------------------------------------
+
+      document.title = `${series.title} | Luan's Archives`;
+      $('#title').textContent = series.title;
+      $('#breadcrumbTitle').textContent = series.title;
+      $('#summary').textContent = series.summary;
+      $('#tags').innerHTML = (series.tags||[]).map(t => `<span class="px-3 py-1 bg-white/10 rounded-full text-xs">${t}</span>`).join('');
+      
+      const yt = $('#ytLink');
+      if(series.links?.youtubePlaylist) yt.href = series.links.youtubePlaylist;
+      else yt.classList.add('hidden');
+
+      const epContainer = $('#episodes');
+      if(!series.episodes || series.episodes.length === 0){
+        epContainer.innerHTML = '<div class="p-4 text-slate-500">No episodes registered.</div>';
+      } else {
+        epContainer.innerHTML = series.episodes.map((ep, idx) => {
+          const vid = getYouTubeId(ep.url);
+          const thumbUrl = vid ? `https://img.youtube.com/vi/${vid}/mqdefault.jpg` : null;
+          const hasSummary = !!ep.summary;
+          
+          return `
+          <div class="block lib-card p-4 rounded-2xl transition group relative">
+            <div class="flex flex-col sm:flex-row gap-4">
+              ${thumbUrl ? `
+              <a href="${ep.url || '#'}" target="_blank" class="sm:w-40 h-24 flex-shrink-0 bg-cover bg-center rounded-lg border border-white/10 hover:opacity-80 transition" 
+                   style="background-image:url('${thumbUrl}')"></a>
+              ` : ''}
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-3 mb-1">
+                    <span class="text-xs text-orange-300 font-bold">#${ep.no}</span>
+                    ${ep.publishedAt ? `<span class="text-[10px] text-slate-500 font-mono border border-white/10 px-1 rounded">${formatDate(ep.publishedAt)}</span>` : ''}
+                </div>
+                <a href="${ep.url || '#'}" target="_blank" class="text-lg font-bold text-white truncate hover:text-orange-200 transition block mb-2">
+                    ${ep.title} <span class="text-xs ml-1 text-slate-500">▶</span>
+                </a>
+                ${hasSummary ? `
+                    <div class="relative">
+                        <p id="desc-${idx}" class="text-sm text-slate-400 leading-relaxed line-clamp-2 transition-all duration-300">
+                            ${ep.summary}
+                        </p>
+                        <button id="btn-${idx}" onclick="toggleSummary('${idx}')" class="text-xs text-indigo-400 hover:text-indigo-300 font-bold mt-1 focus:outline-none">
+                            ...もっと見る
+                        </button>
+                    </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `}).join('');
+      }
+
+      // 総集編の描画
+      const compContainer = $('#compilations');
+      const compWrapper = $('#compilationWrapper');
+
+      if (series.compilations && series.compilations.length > 0) {
+        compWrapper.classList.remove('hidden');
+        compContainer.innerHTML = series.compilations.map((ep, idx) => {
+          const vid = getYouTubeId(ep.url);
+          const thumbUrl = vid ? `https://img.youtube.com/vi/${vid}/mqdefault.jpg` : null;
+          const hasSummary = !!ep.summary;
+          const uniqueId = `comp-${idx}`;
+          
+          return `
+          <div class="block lib-card p-4 rounded-2xl transition group relative border-l-2 border-red-500/50">
+            <div class="flex flex-col sm:flex-row gap-4">
+              ${thumbUrl ? `
+              <a href="${ep.url || '#'}" target="_blank" class="sm:w-40 h-24 flex-shrink-0 bg-cover bg-center rounded-lg border border-white/10 hover:opacity-80 transition" 
+                   style="background-image:url('${thumbUrl}')"></a>
+              ` : ''}
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-3 mb-1">
+                    <span class="text-xs text-red-400 font-bold">総集編</span>
+                    ${ep.publishedAt ? `<span class="text-[10px] text-slate-500 font-mono border border-white/10 px-1 rounded">${formatDate(ep.publishedAt)}</span>` : ''}
+                </div>
+                <a href="${ep.url || '#'}" target="_blank" class="text-lg font-bold text-white truncate hover:text-red-300 transition block mb-2">
+                    ${ep.title} <span class="text-xs ml-1 text-slate-500">▶</span>
+                </a>
+                ${hasSummary ? `
+                    <div class="relative">
+                        <p id="desc-${uniqueId}" class="text-sm text-slate-400 leading-relaxed line-clamp-2 transition-all duration-300">
+                            ${ep.summary}
+                        </p>
+                        <button id="btn-${uniqueId}" onclick="toggleSummary('${uniqueId}')" class="text-xs text-indigo-400 hover:text-indigo-300 font-bold mt-1 focus:outline-none">
+                            ...もっと見る
+                        </button>
+                    </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;}).join('');
+      }
+    }
+    init();
   </script>
 </body>
 </html>

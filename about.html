@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Luan | Luan's Arcane Archives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="images/icon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'], serif: ['"Noto Serif JP"', 'serif'] },
+                    colors: { gold: 'rgba(210,178,106, 1)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body{ background: #07060a; color: #e2e8f0; }
+        .bg-fixed-layer { position: fixed; inset: 0; z-index: -2; background-image: url('https://images.unsplash.com/photo-1535905557558-afc4877a26fc?q=80'); background-size: cover; background-position: center; filter: brightness(0.4); }
+        .glass { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="bg-fixed-layer"></div>
+
+    <header class="sticky top-0 z-50 px-4 py-4">
+        <nav class="max-w-4xl mx-auto bg-black/80 backdrop-blur border border-white/10 rounded-full px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-purple-200">Luan's Arcane Archives</a>
+            <a href="index.html" class="text-sm font-bold text-slate-300 hover:text-white transition">← Home</a>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-10 md:py-20">
+        <div class="text-center mb-16">
+            <div class="w-32 h-32 mx-auto rounded-full border-4 border-indigo-500/30 p-1 mb-6">
+                <img src="images/icon.jpg" alt="Luan" class="w-full h-full rounded-full object-cover">
+            </div>
+            <h1 class="font-serif text-4xl md:text-5xl font-black text-white mb-2">るあん (Luan)</h1>
+            <p class="text-indigo-300 font-bold tracking-widest uppercase">Scriptwriter / Movie Creator</p>
+        </div>
+
+        <div class="grid gap-8">
+            <section class="glass rounded-3xl p-8 md:p-10">
+                <h2 class="font-serif text-2xl font-bold text-white mb-4 border-l-4 border-indigo-400 pl-3">Introduction</h2>
+                <p class="text-slate-300 leading-relaxed">
+                    ゆっくり茶番劇者として活動中。<br>東方Projectのキャラクターと世界観をお借りして、画面の向こう側の「体験」をお届けします。<br>
+                    見終わった後、日常の景色が少し変わって見えるような、没入感あふれる脚本を目指しています。
+                </p>
+            </section>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <section class="glass rounded-3xl p-8">
+                    <h2 class="font-serif text-xl font-bold text-white mb-4">Activity</h2>
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>活動開始</span>
+                            <span class="font-mono text-white">2025年9月</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>投稿頻度</span>
+                            <span class="font-mono text-white">週1~3本</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>主なジャンル</span>
+                            <span class="text-white">ヒューマンドラマ / ファンタジー</span>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section class="glass rounded-3xl p-8">
+                    <h2 class="font-serif text-xl font-bold text-white mb-6">Q&A</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-bold text-indigo-200 mb-1">Q. コラボは受け付けていますか？</h3>
+                            <p class="text-slate-300 text-sm">A. 現在は相互フォローの方、または面識のある方に限らせていただいております。</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-indigo-200 mb-1">Q. ファンアートを描いてもいいですか？</h3>
+                            <p class="text-slate-300 text-sm">A. 大歓迎です！飛んで喜びます！(タグは作成していませんが...)</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-indigo-200 mb-1">Q. Webサイト作成や動画編集の依頼は受け付けていますか？</h3>
+                            <p class="text-slate-300 text-sm">A. もし私でよろしければ、ぜひご相談ください。なお、ご依頼は原則として有償にて承っております。</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-indigo-200 mb-1">Q. このサイトの不具合報告は、どこにすればいいですか？</h3>
+                            <p class="text-slate-300 text-sm">A.  X(Twitter) のDMまでご報告ください。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="glass rounded-3xl p-8">
+                    <h2 class="font-serif text-xl font-bold text-white mb-4">Environment</h2>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm">
+                        <li>編集ソフト：YMM4 (ゆっくりムービーメーカー4)</li>
+                        <li>立ち絵素材：はるか式立ち絵 / わたおきば 他</li>
+                        <li>各種素材：ニコニ・コモンズ / ゲームまてりあるず 他</li>
+                    
+                    </ul>
+                </section>
+            </div>
+
+            <section class="text-center mt-10">
+                <h2 class="font-serif text-2xl font-bold text-white mb-6">Connect</h2>
+                <div class="flex justify-center gap-4">
+                    <a href="https://www.youtube.com/@luanruan_yukkuri" target="_blank" class="px-8 py-4 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold transition shadow-lg hover:shadow-red-900/50">
+                        YouTube Channel
+                    </a>
+                    <a href="https://x.com/LuanRuan5831" target="_blank" class="px-8 py-4 rounded-full bg-black border border-white/20 hover:bg-white/10 text-white font-bold transition">
+                        X (Twitter)
+                    </a>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-8 text-sm text-slate-400">
+                <h3 class="font-bold text-slate-200 mb-3">⚠️ ガイドライン・免責事項</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>当サイト及び公開動画は「東方Project」の二次創作作品です。</li>
+                    <li>動画およびサムネイルの無断転載・自作発言は固くお断りいたします。</li>
+                    <li>
+                        切り抜き動画等、私に関連するコンテンツの作成については、
+                        <a href="https://x.com/LuanRuan5831" class="text-indigo-300 underline hover:text-indigo-200">X(Twitter)</a>
+                        のDMまでご相談ください。
+                    </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer class="text-center py-10 text-slate-500 text-sm">
+        &copy; 2026 LUAN ARCHIVES.
+    </footer>
+</body>
+</html>
