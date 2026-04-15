@@ -694,6 +694,22 @@
       "url": "https://youtu.be/SoH-vYJRPfo",
       "videoId": "VIDEO_ID_2",
       "thumb": "../images/alice.png"
+    },
+    {
+      "id": "oneshot-naiyo",
+      "slug": "oneshot-naiyo",
+      "title": "",
+      "publishedAt": "2026-04-15",
+      "updatedAt": "2025-04-15",
+      "order": 50,
+      "summary": "私が大事なものを持つことは...許されないのか？",
+      "tags": [
+        "単発",
+        "魔理沙"
+      ],
+      "url": "https://youtu.be/DcWyyP90JMM",
+      "videoId": "VIDEO_ID_2",
+      "thumb": ""
     }
   ]
 }
