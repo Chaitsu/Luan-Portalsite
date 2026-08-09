@@ -902,9 +902,26 @@
       "summary": "私が大事なものを持つことは...許されないのか？",
       "tags": [
         "単発",
-        "魔理沙"
+        "霧雨魔理沙"
       ],
       "url": "https://youtu.be/DcWyyP90JMM",
+      "videoId": "VIDEO_ID_2",
+      "thumb": ""
+    },
+    {
+      "id": "oneshot-fireworks",
+      "slug": "oneshot-fireworks",
+      "title": "花火師小町",
+      "publishedAt": "2026-08-08",
+      "updatedAt": "2025-08-08",
+      "order": 50,
+      "summary": "進む道が見えない夏。花火師を目指す少女との出会いが、止まっていた未来を少しずつ動かしていく――。",
+      "tags": [
+        "単発",
+        "小野塚小町",
+        "ヒューマンドラマ"
+      ],
+      "url": "https://youtu.be/ES1V2Kmm1VE",
       "videoId": "VIDEO_ID_2",
       "thumb": ""
     }
