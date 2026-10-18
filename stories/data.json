@@ -189,7 +189,7 @@
       "status": "ongoing",
       "order": 30,
       "createdAt": "2025-11-03",
-      "updatedAt": "2026-09-25",
+      "updatedAt": "2026-10-18",
       "summary": "田舎から都会に引っ越してきた大学生がある日突然、スキマに落ち幻想入り。そんな彼の持っていた能力は、死に戻りするというものだった。",
       "tags": [
         "幻想入り",
@@ -420,6 +420,26 @@
           "summary": "ドッペルゲンガーの策により、隔離空間へと分断されてしまった幻想郷連合軍。霊夢たちは白黒の絵画のような空間へ、レミリアと咲夜は紅い光が差し込むゴシックな空間へ、アリス・サク・クロエはタイルが並ぶ空間へ、さとりとこいしは電子的な空間へ飛ばされ...",
           "videoId": "VIDEO_ID_1",
           "thumb": ""
+        },
+        {
+          "id": "kaiji-ep-023",
+          "no": 23,
+          "title": "Eps.23：完全で瀟洒な主従",
+          "publishedAt": "2026-10-14",
+          "url": "https://youtu.be/ZezRry7tDmU",
+          "summary": "隔離空間でレミリアと咲夜の前に立ち塞がったのは、自身を模した偽物だった。敵のバグの性質により、運命操作も時間停止も無効化されてしまう。だが、誇り高き紅魔の主従に焦りは微塵もなかった。咲夜は能力に頼らぬ純粋な体術と手数の暴力で偽物を圧倒し、レミリアは運命すらねじ伏せる圧倒的な魔力で真紅の槍を構え...！",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
+        },
+        {
+          "id": "kaiji-ep-024",
+          "no": 24,
+          "title": "Eps.24：白と黒、星を穿つ絆",
+          "publishedAt": "2026-10-18",
+          "url": "https://youtu.be/ZezRry7tDmU",
+          "summary": "分断された隔離空間にて、未来のデータを学習した自身の偽物と対峙する霊夢と魔理沙。バグを利用して無限に増殖する弾幕を前に、まともな撃ち合いではジリ貧だと悟る。魔理沙は霊夢を完全に信頼し、無防備な状態で最大火力のチャージを開始。霊夢が相棒の為にとる行動とは...！",
+          "videoId": "VIDEO_ID_1",
+          "thumb": ""
         }
       ],
       "compilations": [
@@ -427,6 +447,11 @@
           "title": "Eps.1~10 総集編",
           "url": "https://youtu.be/4JU6627YbYA",
           "publishedAt": "2025-05-12"
+        },
+        {
+          "title": "Eps.11~20 総集編",
+          "url": "https://youtu.be/qqPrfAm8QPw",
+          "publishedAt": "2025-09-26"
         }
       ]
     },
@@ -985,6 +1010,24 @@
         "戦闘"
       ],
       "url": "https://youtu.be/b8lqKaWOvY8",
+      "videoId": "VIDEO_ID_2",
+      "thumb": ""
+    },
+    {
+      "id": "oneshot-oneanniv",
+      "slug": "oneshot-oneanniv",
+      "title": "she【1周年】",
+      "publishedAt": "2026-10-07",
+      "updatedAt": "2025-10-07",
+      "order": 50,
+      "summary": "1周年記念：『東方地電郷』アナザーストーリー",
+      "tags": [
+        "周年記念",
+        "SF",
+        "ディストピア",
+        "ミステリー"
+      ],
+      "url": "https://youtu.be/46T0jpgqfrk",
       "videoId": "VIDEO_ID_2",
       "thumb": ""
     }
